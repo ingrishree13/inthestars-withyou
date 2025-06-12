@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  font-family: 'Verdana', sans-serif;
+  background: url("babe-background.png") no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.2); /* 0.2 = very transparent */
+  backdrop-filter: blur(10px);         /* adds a soft blur behind it */
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+
+h1 {
+  font-size: 2.0rem;
+  color: #c89ce5; /* soft pastel lavender */
+}
+
+p {
+  font-size: 1.2rem;
+  margin: 20px 0;
+  color: white;
+  
+}
+
+.buttons button {
+  padding: 12px 24px;
+  margin: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#yesBtn {
+  background-color:  #c89ce5; 
+  color: white;
+}
+
+#noBtn {
+  background-color: black;
+color: white;
+}
+
+#noBtn:hover {
+  transform: #333;
+}
