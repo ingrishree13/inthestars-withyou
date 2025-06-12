@@ -8,9 +8,14 @@ noBtn.addEventListener('mouseover', () => {
   const maxX = window.innerWidth - btnWidth;
   const maxY = window.innerHeight - btnHeight;
 
-  const newX = Math.random() * maxX;
-  const newY = Math.random() * maxY;
+  const randomX = Math.floor(Math.random() * maxX);
+  const randomY = Math.floor(Math.random() * maxY);
 
-  noBtn.style.left = `${newX}px`;
-  noBtn.style.top = `${newY}px`;
+  noBtn.style.position = 'absolute';
+  noBtn.style.left = `${randomX}px`;
+  noBtn.style.top = `${randomY}px`;
+});
+
+yesBtn.addEventListener('click', () => {
+  window.location.href = "yes.html";
 });

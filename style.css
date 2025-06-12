@@ -51,9 +51,9 @@ p {
 }
 
 #noBtn {
-  position: absolute;
   background-color: black;
   color: white;
+  position: absolute;
   z-index: 1000;
   transition: all 0.2s ease;
 }
