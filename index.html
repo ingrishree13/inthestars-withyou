@@ -38,27 +38,35 @@
     window.location.href = "yes.html";
   });
 
-  noBtn.addEventListener('mouseover', () => {
+  function moveNoButtonSafely() {
     const btnWidth = noBtn.offsetWidth;
     const btnHeight = noBtn.offsetHeight;
 
+    // Middle of the screen
     const centerX = window.innerWidth / 2;
     const centerY = window.innerHeight / 2;
-    const rangeX = 250;
-    const rangeY = 180;
 
-    const offsetX = Math.floor(Math.random() * rangeX * 2) - rangeX;
-    const offsetY = Math.floor(Math.random() * rangeY * 2) - rangeY;
+    // Small area around center to move in
+    const rangeX = 200;
+    const rangeY = 150;
 
-    const newX = centerX + offsetX - btnWidth / 2;
-    const newY = centerY + offsetY - btnHeight / 2;
+    const offsetX = Math.random() * rangeX * 2 - rangeX;
+    const offsetY = Math.random() * rangeY * 2 - rangeY;
 
-    // Move the button
+    const newX = Math.min(
+      Math.max(centerX + offsetX - btnWidth / 2, 10),
+      window.innerWidth - btnWidth - 10
+    );
+    const newY = Math.min(
+      Math.max(centerY + offsetY - btnHeight / 2, 10),
+      window.innerHeight - btnHeight - 10
+    );
+
     noBtn.style.position = 'fixed';
     noBtn.style.left = `${newX}px`;
     noBtn.style.top = `${newY}px`;
 
-    // Show speech bubble above button
+    // Move the bubble above the button
     bubble.style.left = `${newX}px`;
     bubble.style.top = `${newY - 40}px`;
     bubble.style.display = 'block';
@@ -67,14 +75,16 @@
       bubble.style.display = 'none';
     }, 1000);
 
-    // Confetti burst 🎉
+    // Fire confetti
     confetti({
-      particleCount: 40,
+      particleCount: 50,
       spread: 60,
       origin: {
         x: newX / window.innerWidth,
         y: newY / window.innerHeight
       }
     });
-  });
+  }
+
+  noBtn.addEventListener('mouseover', moveNoButtonSafely);
 </script>
