@@ -5,8 +5,9 @@ noBtn.addEventListener('mouseover', () => {
   const btnWidth = noBtn.offsetWidth;
   const btnHeight = noBtn.offsetHeight;
 
-  const maxX = window.innerWidth - btnWidth;
-  const maxY = window.innerHeight - btnHeight;
+  // Calculate the max X and Y to keep the button on screen
+  const maxX = window.innerWidth - btnWidth - 20;  // 20px padding
+  const maxY = window.innerHeight - btnHeight - 20;
 
   const randomX = Math.floor(Math.random() * maxX);
   const randomY = Math.floor(Math.random() * maxY);
