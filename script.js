@@ -1,3 +1,6 @@
+const yesBtn = document.getElementById('yesBtn');
+const noBtn = document.getElementById('noBtn');
+
 noBtn.addEventListener('mouseover', () => {
   const btnWidth = noBtn.offsetWidth;
   const btnHeight = noBtn.offsetHeight;
