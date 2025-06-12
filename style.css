@@ -1,12 +1,12 @@
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden; /* optional: prevents scrollbars */
+  height: 100vh;
+  overflow: hidden;
   position: relative;
   font-family: 'Verdana', sans-serif;
   background: url("babe-background.png") no-repeat center center fixed;
   background-size: cover;
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,12 +51,13 @@ p {
 }
 
 #noBtn {
+  position: fixed; /* very important: replaces absolute */
+  z-index: 1000;
   background-color: black;
   color: white;
-  position: absolute;
-  z-index: 1000;
   transition: all 0.2s ease;
 }
+
 
 
 #noBtn:hover {

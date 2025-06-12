@@ -8,37 +8,43 @@
 </head>
 <body>
   <div class="container">
-    <h1>my love.</h1>
+    <h1>my love</h1>
     <p>can we kiss forever?</p>
     <div class="buttons">
       <button id="yesBtn">Yes</button>
       <button id="noBtn">No</button>
     </div>
   </div>
-  <script src="script.js"></script>
- <script>
+
+  <script>
   const yesBtn = document.getElementById('yesBtn');
   const noBtn = document.getElementById('noBtn');
+
+  yesBtn.addEventListener('click', () => {
+    window.location.href = "yes.html";
+  });
 
   noBtn.addEventListener('mouseover', () => {
     const btnWidth = noBtn.offsetWidth;
     const btnHeight = noBtn.offsetHeight;
 
-    const maxX = window.innerWidth - btnWidth;
-    const maxY = window.innerHeight - btnHeight;
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
 
-    const randomX = Math.floor(Math.random() * maxX);
-    const randomY = Math.floor(Math.random() * maxY);
+    // Define a safe playful zone (not full screen)
+    const rangeX = 150;
+    const rangeY = 100;
 
-    noBtn.style.position = 'absolute';
-    noBtn.style.left = `${randomX}px`;
-    noBtn.style.top = `${randomY}px`;
-  });
+    const offsetX = Math.floor(Math.random() * rangeX * 2) - rangeX;
+    const offsetY = Math.floor(Math.random() * rangeY * 2) - rangeY;
 
-  yesBtn.addEventListener('click', () => {
-    window.location.href = "yes.html";
+    const newX = centerX + offsetX - btnWidth / 2;
+    const newY = centerY + offsetY - btnHeight / 2;
+
+    // Always stays in view
+    noBtn.style.position = 'fixed';
+    noBtn.style.left = `${newX}px`;
+    noBtn.style.top = `${newY}px`;
   });
 </script>
- 
-</body>
-</html>
+
