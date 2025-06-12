@@ -15,10 +15,24 @@
       <button id="noBtn">No</button>
     </div>
   </div>
-
-  <script>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script>
   const yesBtn = document.getElementById('yesBtn');
   const noBtn = document.getElementById('noBtn');
+
+  const bubble = document.createElement('div');
+  bubble.innerText = 'Not so fast!';
+  bubble.style.position = 'fixed';
+  bubble.style.background = 'rgba(255, 255, 255, 0.9)';
+  bubble.style.padding = '6px 12px';
+  bubble.style.borderRadius = '20px';
+  bubble.style.fontSize = '14px';
+  bubble.style.fontFamily = 'Times New Roman';
+  bubble.style.boxShadow = '0 2px 8px rgba(0,0,0,0.2)';
+  bubble.style.zIndex = '1001';
+  bubble.style.display = 'none';
+  document.body.appendChild(bubble);
 
   yesBtn.addEventListener('click', () => {
     window.location.href = "yes.html";
@@ -30,10 +44,8 @@
 
     const centerX = window.innerWidth / 2;
     const centerY = window.innerHeight / 2;
-
-    // Define a safe playful zone (not full screen)
-    const rangeX = 150;
-    const rangeY = 100;
+    const rangeX = 250;
+    const rangeY = 180;
 
     const offsetX = Math.floor(Math.random() * rangeX * 2) - rangeX;
     const offsetY = Math.floor(Math.random() * rangeY * 2) - rangeY;
@@ -41,10 +53,28 @@
     const newX = centerX + offsetX - btnWidth / 2;
     const newY = centerY + offsetY - btnHeight / 2;
 
-    // Always stays in view
+    // Move the button
     noBtn.style.position = 'fixed';
     noBtn.style.left = `${newX}px`;
     noBtn.style.top = `${newY}px`;
+
+    // Show speech bubble above button
+    bubble.style.left = `${newX}px`;
+    bubble.style.top = `${newY - 40}px`;
+    bubble.style.display = 'block';
+
+    setTimeout(() => {
+      bubble.style.display = 'none';
+    }, 1000);
+
+    // Confetti burst 🎉
+    confetti({
+      particleCount: 40,
+      spread: 60,
+      origin: {
+        x: newX / window.innerWidth,
+        y: newY / window.innerHeight
+      }
+    });
   });
 </script>
-
